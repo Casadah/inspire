@@ -4,11 +4,12 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
-    { label: 'Programs', href: '#projects' },
+    { label: 'Projects', href: '#projects' },
     { label: 'About', href: '#about' },
     { label: 'Team', href: '#team' },
     { label: 'Join', href: '#join' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Gallery', href: '#gallery' },
     { label: 'Privacy', href: '#' },
   ];
 
@@ -30,7 +31,7 @@ const Footer = () => {
             className="text-white font-bold text-xl tracking-tight"
             style={{ fontFamily: 'Sora, sans-serif' }}
           >
-            INSPIRE
+            INSPIRE DEVELOPMENT INITIATIVE
           </a>
 
           {/* Links */}
