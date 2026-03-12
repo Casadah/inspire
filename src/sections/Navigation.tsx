@@ -19,11 +19,18 @@ const Navigation = () => {
     { label: 'Programs', href: '#projects' },
     { label: 'About', href: '#about' },
     { label: 'Team', href: '#team' },
+    { label: 'Gallery', href: '#gallery' },
     { label: 'Join', href: '#join' },
     { label: 'Contact', href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
+    if (href === '#top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -36,19 +43,20 @@ const Navigation = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#F6F7FA]/90 backdrop-blur-md shadow-sm'
+            ? 'bg-[#F6F7FA]/92 backdrop-blur-md shadow-sm'
             : 'bg-transparent'
         }`}
       >
         <div className="flex items-center justify-between px-[9vw] py-5">
-          {/* Logo */}
-          <a
-            href="#"
-            className="text-[#0B0D10] font-bold text-xl tracking-tight"
+          {/* Logo / Brand */}
+          <button
+            onClick={() => scrollToSection('#top')}
+            className="text-left text-[#0B0D10] font-bold tracking-tight leading-tight"
             style={{ fontFamily: 'Sora, sans-serif' }}
           >
-            INSPIRE
-          </a>
+            <span className="block text-lg md:text-xl">INSPIRE DEVELOPMENT</span>
+            <span className="block text-sm md:text-base text-[#F2B33D]">INITIATIVE</span>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -61,6 +69,7 @@ const Navigation = () => {
                 {link.label}
               </button>
             ))}
+
             <Button
               onClick={() => scrollToSection('#join')}
               className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-5 py-2 text-sm font-semibold flex items-center gap-2"
@@ -74,6 +83,7 @@ const Navigation = () => {
           <button
             className="md:hidden text-[#0B0D10]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle navigation menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -84,6 +94,14 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[99] bg-[#F6F7FA] pt-24 px-8 md:hidden">
           <div className="flex flex-col gap-6">
+            <button
+              onClick={() => scrollToSection('#top')}
+              className="text-[#0B0D10] text-lg font-semibold text-left border-b border-[#E5E7EB] pb-4"
+              style={{ fontFamily: 'Sora, sans-serif' }}
+            >
+              INSPIRE DEVELOPMENT INITIATIVE
+            </button>
+
             {navLinks.map((link) => (
               <button
                 key={link.label}
@@ -93,6 +111,7 @@ const Navigation = () => {
                 {link.label}
               </button>
             ))}
+
             <Button
               onClick={() => scrollToSection('#join')}
               className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-6 py-3 text-base font-semibold flex items-center justify-center gap-2 mt-4"
