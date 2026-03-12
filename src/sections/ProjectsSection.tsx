@@ -26,7 +26,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         schools: ['Baptist Academy', 'Ilimi International College', 'Yafi Academy'],
         location: 'Gombe',
         icon: GraduationCap,
-        image: '/images/programs_circle.jpg',
+        image: '/images/agenda.jpg',
         fullDescription: 'The AGENDA PROJECT is our flagship initiative aimed at empowering young women across Gombe State. Through strategic partnerships with leading educational institutions, we provide comprehensive training in leadership, life skills, and vocational education.',
       },
       {
@@ -35,7 +35,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         impact: 'Cohort one admitted 30 young women',
         phases: ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4'],
         icon: Users,
-        image: '/images/youth_women_circle.jpg',
+        image: '/images/lgm.jpg',
         fullDescription: 'ILGM is a transformative one-year journey designed to guide young women toward discovering their purpose and achieving their dreams. The program combines in-person seminars, virtual learning sessions, one-on-one coaching, and peer support networks.',
       },
       {
@@ -43,7 +43,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Six-month training for 20 young males through mentoring, coaching, and role modeling to create a new mindset.',
         impact: 'Building confident young men for tomorrow',
         icon: Users,
-        image: '/images/leadership_circle.jpg',
+        image: '/images/menshub.jpg',
         fullDescription: 'MENS HUB addresses the unique challenges faced by young men in our communities. Through mentorship from positive role models, participants develop emotional intelligence, leadership skills, and a sense of responsibility.',
       },
     ],
@@ -53,7 +53,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Targeted at young teenagers, equipping them with knowledge on self-discovery and social etiquette for successful transition into adulthood.',
         locations: ['ECWA Gospel Gombe', 'ECWA Goodnews Federal Low Cost'],
         icon: TrendingUp,
-        image: '/images/events_circle.jpg',
+        image: '/images/transition.jpg',
         fullDescription: 'The Transition Project helped hundreds of teenagers navigate the challenging journey from adolescence to adulthood. Participants learned essential life skills including communication, decision-making, and personal responsibility.',
       },
       {
@@ -61,7 +61,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'A therapeutic round table session giving individuals space to share past experiences and struggles, targeted toward healing from traumatic backgrounds.',
         impact: 'Started with 5 persons',
         icon: MessageCircle,
-        image: '/images/advocacy_circle.jpg',
+        image: '/images/speak.jpg',
         fullDescription: 'SPEAK PROJECT creates safe spaces for individuals to share their stories and begin their healing journey. Through guided discussions and professional support, participants find strength in community and vulnerability.',
       },
       {
@@ -69,7 +69,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Engagement celebrating and empowering young girls in the community.',
         location: 'Shongo Idirisa',
         icon: Calendar,
-        image: '/images/youth_women_circle.jpg',
+        image: '/images/school.jpg',
         fullDescription: 'Our International Day for the Girl Child celebration brought together girls from across the community for a day of inspiration, education, and empowerment.',
       },
       {
@@ -77,7 +77,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Community dialogue fostering peaceful coexistence and understanding.',
         location: 'Billiri',
         icon: MessageCircle,
-        image: '/images/advocacy_circle.jpg',
+        image: '/images/peace1.jpg',
         fullDescription: 'The Peace Dialogue at Billiri brought together community leaders and residents to discuss challenges and build bridges toward peaceful coexistence.',
       },
       {
@@ -85,7 +85,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Youth engagement on taking responsibility for community development.',
         location: 'Gelengu',
         icon: Users,
-        image: '/images/join_circle.jpg',
+        image: '/images/gelengu.jpg',
         fullDescription: 'This engagement empowered youth in Gelengu to take active roles in shaping their community\'s future through responsibility and leadership.',
       },
       {
@@ -93,7 +93,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Partnership with USGS on peaceful co-existence of all religions in Gombe.',
         location: 'Gombe',
         icon: MessageCircle,
-        image: '/images/advocacy_circle.jpg',
+        image: '/images/peace.jpg',
         fullDescription: 'In partnership with USGS, this dialogue brought together religious leaders and community members to promote understanding and peaceful coexistence across faiths.',
       },
     ],
@@ -103,7 +103,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Upcoming initiative focused on leadership and development in underserved communities.',
         status: 'Coming Soon',
         icon: TrendingUp,
-        image: '/images/hero_circle.jpg',
+        image: '/images/ladu.jpg',
         fullDescription: 'The LADU Project will expand our reach to underserved communities, bringing leadership training and development opportunities to those who need them most.',
       },
       {
@@ -111,7 +111,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Expanding capacity building programs for teams and partner organizations.',
         status: 'In Planning',
         icon: GraduationCap,
-        image: '/images/leadership_circle.jpg',
+        image: '/images/hero_bg.jpg',
         fullDescription: 'We are developing comprehensive training programs to build the capacity of our team and partner organizations, ensuring sustainable impact across all our initiatives.',
       },
     ],
