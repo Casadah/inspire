@@ -112,7 +112,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
       {/* Top Right Logo */}
       <div className="hidden lg:block absolute top-28 right-[9vw] z-20">
         <img
-          src="/images/logo.jpg"
+          src="/images/logo.png"
           alt="INSPIRE Development Initiative Logo"
           className="w-[140px] xl:w-[170px] h-auto object-contain"
         />
