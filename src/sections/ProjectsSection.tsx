@@ -119,7 +119,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'A rebranded Transition Project focused on school students’ mental health, improved academic performance, and success in life.',
         status: 'In Planning',
         icon: GraduationCap,
-        image: '/images/transition.jpg',
+        image: '/images/pathfinder.jpg',
         fullDescription: 'The Pathfinders Project is a rebranded version of the Transition Project, specially designed for school students. It focuses on strengthening mental health, improving academic performance, building self-awareness, and equipping students for long-term success in life.',
       },
     ],
