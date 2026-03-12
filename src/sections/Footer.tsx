@@ -49,7 +49,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-white/40 text-sm flex items-center gap-1 text-center md:text-right">
-            Made with <Heart className="w-4 h-4 text-[#F2B33D]" /> © {currentYear} INSPIRE DEVELOPMENT INITIATIVE
+            © {currentYear} INSPIRE DEVELOPMENT INITIATIVE
           </p>
         </div>
       </div>
