@@ -120,13 +120,13 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                   className="heading-display text-white leading-tight"
                   style={{ fontSize: 'clamp(32px, 5vw, 72px)' }}
                 >
-                  <span className="headline-line block text-[#F2B33D]">
+                  <span className="headline-line block text-[#F25A07]">
                     SPARK INITIATIVE
                   </span>
-                  <span className="headline-line block">
+                  <span className="headline-line block text-[#22F304]">
                     FOR SOCIAL ECONOMIC
                   </span>
-                  <span className="headline-line block">
+                  <span className="headline-line block text-[#22F304]">
                     AND SUSTAINABLE CHANGE
                   </span>
                   <span className="headline-line block text-white/85 text-[0.42em] mt-4 leading-snug">
@@ -146,7 +146,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <Button
                     onClick={scrollToPrograms}
-                    className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-8 py-4 text-base font-semibold flex items-center gap-2 group"
+                    className="bg-[#22F304] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-8 py-4 text-base font-semibold flex items-center gap-2 group"
                   >
                     Explore Projects
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
