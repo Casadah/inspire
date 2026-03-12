@@ -21,6 +21,24 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
   const projects = {
     ongoing: [
       {
+        title: 'MENS HUB',
+        description: 'Six-month training for 20 young males through mentoring, coaching, and role modeling to create a new mindset.',
+        impact: 'Building confident young men for tomorrow',
+        icon: Users,
+        image: '/images/menshub.jpg',
+        fullDescription: 'MENS HUB addresses the unique challenges faced by young men in our communities. Through mentorship from positive role models, participants develop emotional intelligence, leadership skills, and a sense of responsibility.',
+      },
+      {
+        title: 'SPEAK PROJECT',
+        description: 'A therapeutic round table session giving individuals space to share past experiences and struggles, targeted toward healing from traumatic backgrounds.',
+        impact: 'Started with 5 persons',
+        icon: MessageCircle,
+        image: '/images/speak.jpg',
+        fullDescription: 'SPEAK PROJECT creates safe spaces for individuals to share their stories and begin their healing journey. Through guided discussions and professional support, participants find strength in community and vulnerability.',
+      },
+    ],
+    past: [
+      {
         title: 'AGENDA PROJECT',
         description: 'To empower 450 young women for a vibrant and productive society through school engagements and skills training.',
         schools: ['Baptist Academy', 'Ilimi International College', 'Yafi Academy'],
@@ -39,30 +57,12 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         fullDescription: 'ILGM is a transformative one-year journey designed to guide young women toward discovering their purpose and achieving their dreams. The program combines in-person seminars, virtual learning sessions, one-on-one coaching, and peer support networks.',
       },
       {
-        title: 'MENS HUB',
-        description: 'Six-month training for 20 young males through mentoring, coaching, and role modeling to create a new mindset.',
-        impact: 'Building confident young men for tomorrow',
-        icon: Users,
-        image: '/images/menshub.jpg',
-        fullDescription: 'MENS HUB addresses the unique challenges faced by young men in our communities. Through mentorship from positive role models, participants develop emotional intelligence, leadership skills, and a sense of responsibility.',
-      },
-    ],
-    past: [
-      {
         title: 'Transition Project',
         description: 'Targeted at young teenagers, equipping them with knowledge on self-discovery and social etiquette for successful transition into adulthood.',
         locations: ['ECWA Gospel Gombe', 'ECWA Goodnews Federal Low Cost'],
         icon: TrendingUp,
         image: '/images/transition.jpg',
         fullDescription: 'The Transition Project helped hundreds of teenagers navigate the challenging journey from adolescence to adulthood. Participants learned essential life skills including communication, decision-making, and personal responsibility.',
-      },
-      {
-        title: 'SPEAK PROJECT',
-        description: 'A therapeutic round table session giving individuals space to share past experiences and struggles, targeted toward healing from traumatic backgrounds.',
-        impact: 'Started with 5 persons',
-        icon: MessageCircle,
-        image: '/images/speak.jpg',
-        fullDescription: 'SPEAK PROJECT creates safe spaces for individuals to share their stories and begin their healing journey. Through guided discussions and professional support, participants find strength in community and vulnerability.',
       },
       {
         title: 'International Day for the Girl Child 2022',
@@ -114,6 +114,14 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         image: '/images/hero_bg.jpg',
         fullDescription: 'We are developing comprehensive training programs to build the capacity of our team and partner organizations, ensuring sustainable impact across all our initiatives.',
       },
+      {
+        title: 'Pathfinders Project',
+        description: 'A rebranded Transition Project focused on school students’ mental health, improved academic performance, and success in life.',
+        status: 'In Planning',
+        icon: GraduationCap,
+        image: '/images/transition.jpg',
+        fullDescription: 'The Pathfinders Project is a rebranded version of the Transition Project, specially designed for school students. It focuses on strengthening mental health, improving academic performance, building self-awareness, and equipping students for long-term success in life.',
+      },
     ],
   };
 
@@ -152,7 +160,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
       className={`relative w-full min-h-screen bg-[#F6F7FA] py-24 md:py-32 ${className}`}
     >
       <div className="px-[9vw]">
-        {/* Section Header */}
         <div className="mb-12">
           <span className="microcopy text-[#F2B33D] reveal-item">OUR WORK</span>
           <h2 className="heading-display text-[#0B0D10] mt-4 reveal-item" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
@@ -163,7 +170,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
           </p>
         </div>
 
-        {/* Tabs */}
         <div className="flex flex-wrap gap-3 mb-12 reveal-item">
           {(['ongoing', 'past', 'future'] as const).map((tab) => (
             <button
@@ -180,7 +186,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
           ))}
         </div>
 
-        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects[activeTab].map((project, index) => (
             <div
@@ -188,7 +193,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
               onClick={() => setSelectedProject(project)}
               className="project-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer"
             >
-              {/* Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
@@ -199,7 +203,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
                 <project.icon className="absolute bottom-4 left-4 w-8 h-8 text-white" />
               </div>
 
-              {/* Content */}
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-[#0B0D10] font-bold text-lg" style={{ fontFamily: 'Sora, sans-serif' }}>
@@ -216,7 +219,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
                   {project.description}
                 </p>
 
-                {/* Schools/Locations */}
                 {'schools' in project && project.schools && (
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.schools.map((school, i) => (
@@ -243,7 +245,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
                   </div>
                 )}
 
-                {/* Impact */}
                 {'impact' in project && project.impact && (
                   <div className="flex items-center gap-2 text-[#F2B33D] text-sm font-medium">
                     <TrendingUp className="w-4 h-4" />
@@ -251,7 +252,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
                   </div>
                 )}
 
-                {/* Phases */}
                 {'phases' in project && project.phases && (
                   <div className="flex flex-wrap gap-2 mt-3">
                     {project.phases.map((phase, i) => (
@@ -266,7 +266,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="mt-12 text-center reveal-item">
           <Button
             onClick={() => setShowAllModal(true)}
@@ -278,7 +277,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         </div>
       </div>
 
-      {/* Project Detail Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
@@ -307,7 +305,6 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         </DialogContent>
       </Dialog>
 
-      {/* All Programs Modal */}
       <Dialog open={showAllModal} onOpenChange={setShowAllModal}>
         <DialogContent className="sm:max-w-3xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
