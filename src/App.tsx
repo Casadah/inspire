@@ -81,6 +81,7 @@ function App() {
         <AboutSection className="z-20" />
         <ProjectsSection className="z-30" />
         <TeamSection className="z-40" />
+        <GallerySection className="z-55" />
         <SuccessStoriesSection className="z-50" />
         <JoinUsSection className="z-60" />
         <ContactSection className="z-70" />
