@@ -148,7 +148,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                     onClick={scrollToPrograms}
                     className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-8 py-4 text-base font-semibold flex items-center gap-2 group"
                   >
-                    Explore Programs
+                    Explore Projects
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
 
