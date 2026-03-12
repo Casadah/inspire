@@ -44,7 +44,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         schools: ['Baptist Academy', 'Ilimi International College', 'Yafi Academy'],
         location: 'Gombe',
         icon: GraduationCap,
-        image: '/images/agenda.jpg',
+        image: '/images/Agenda.jpg',
         fullDescription: 'The AGENDA PROJECT is our flagship initiative aimed at empowering young women across Gombe State. Through strategic partnerships with leading educational institutions, we provide comprehensive training in leadership, life skills, and vocational education.',
       },
       {
