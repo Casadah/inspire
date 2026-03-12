@@ -41,12 +41,10 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          isScrolled
-            ? 'bg-[#F6F7FA]/92 backdrop-blur-md shadow-sm'
-            : 'bg-transparent'
-        }`}
-      >
+  className={`fixed top-0 left-0 right-0 z-[100] bg-white transition-all duration-500 ${
+    isScrolled ? 'shadow-md' : 'shadow-sm'
+  }`}
+        >
         <div className="flex items-center justify-between px-[9vw] py-5">
           {/* Logo / Brand */}
           <button
@@ -54,8 +52,7 @@ const Navigation = () => {
             className="text-left text-[#0B0D10] font-bold tracking-tight leading-tight"
             style={{ fontFamily: 'Sora, sans-serif' }}
           >
-            <span className="block text-lg md:text-xl">INSPIRE DEVELOPMENT</span>
-            <span className="block text-sm md:text-base text-[#F2B33D]">INITIATIVE</span>
+            <span className="block text-lg md:text-xl">INSPIRE DEVELOPMENT INITIATIVE</span>
           </button>
 
           {/* Desktop Navigation */}
