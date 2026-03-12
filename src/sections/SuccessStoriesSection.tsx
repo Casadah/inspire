@@ -22,13 +22,13 @@ const SuccessStoriesSection = ({ className = '' }: SuccessStoriesSectionProps) =
   const testimonials = [
     {
       quote: "The coaching circle changed how I see leadership—it's not about titles, it's about service.",
-      author: 'Amina',
+      author: 'Sheba',
       role: 'Program Participant',
       program: 'ILGM Cohort 1',
     },
     {
       quote: 'I learned to believe in myself and my abilities. The mentorship I received has been life-changing.',
-      author: 'Fatima',
+      author: 'Sarah',
       role: 'AGENDA Project Participant',
       program: 'Baptist Academy',
     },
