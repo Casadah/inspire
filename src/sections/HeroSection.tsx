@@ -17,12 +17,10 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
   const subheadlineRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  // Auto-play entrance animation on page load
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
-      // Headline lines staggered entrance
       const headlineLines = headlineRef.current?.querySelectorAll('.headline-line');
       if (headlineLines) {
         tl.fromTo(
@@ -33,7 +31,6 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         );
       }
 
-      // Subheadline entrance
       tl.fromTo(
         subheadlineRef.current,
         { y: 30, opacity: 0 },
@@ -41,7 +38,6 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         0.8
       );
 
-      // CTA entrance
       tl.fromTo(
         ctaRef.current,
         { y: 30, opacity: 0 },
@@ -53,13 +49,12 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
     return () => ctx.revert();
   }, []);
 
-  // Scroll-driven exit animation
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
     const ctx = gsap.context(() => {
-      const scrollTl = gsap.timeline({
+      gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: 'top top',
@@ -74,10 +69,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             });
           },
         },
-      });
-
-      // EXIT (70% - 100%): Elements exit
-      scrollTl.fromTo(
+      }).fromTo(
         contentRef.current,
         { y: 0, opacity: 1 },
         { y: '-15vh', opacity: 0, ease: 'power2.in' },
@@ -114,49 +106,72 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
           alt="Community gathering"
           className="w-full h-full object-cover"
         />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
       </div>
 
       {/* Content */}
       <div ref={contentRef} className="relative z-10 h-full flex items-center">
         <div className="px-[9vw] w-full">
-          {/* Headline */}
-          <div ref={headlineRef} className="mb-8">
-            <h1 
-              className="heading-display text-white" 
-              style={{ fontSize: 'clamp(48px, 8vw, 120px)' }}
-            >
-              <span className="headline-line block">LIGHT</span>
-              <span className="headline-line block">HOPE</span>
-              <span className="headline-line block text-[#F2B33D]">BUILD</span>
-            </h1>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            {/* Left Content */}
+            <div>
+              <div ref={headlineRef} className="mb-6">
+                <h1
+                  className="heading-display text-white leading-tight"
+                  style={{ fontSize: 'clamp(32px, 5vw, 72px)' }}
+                >
+                  <span className="headline-line block text-[#F2B33D]">
+                    SPARK INITIATIVE
+                  </span>
+                  <span className="headline-line block">
+                    FOR SOCIAL ECONOMIC
+                  </span>
+                  <span className="headline-line block">
+                    AND SUSTAINABLE CHANGE
+                  </span>
+                  <span className="headline-line block text-white/85 text-[0.42em] mt-4 leading-snug">
+                    (INSPIRE DEVELOPMENT INITIATIVE)
+                  </span>
+                </h1>
+              </div>
 
-          {/* Subheadline */}
-          <div ref={subheadlineRef} className="max-w-xl mb-10">
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed">
-              Coaching, mentorship, and community programs that help young people lead with confidence.
-            </p>
-          </div>
+              <div ref={subheadlineRef} className="max-w-2xl mb-10">
+                <p className="text-white/85 text-lg md:text-xl leading-relaxed">
+                  Advancing lives through mentorship, education, community development,
+                  and sustainable social impact for people and communities.
+                </p>
+              </div>
 
-          {/* CTA */}
-          <div ref={ctaRef}>
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Button
-                onClick={scrollToPrograms}
-                className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-8 py-4 text-base font-semibold flex items-center gap-2 group"
-              >
-                Explore Programs
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <button
-                onClick={scrollToJoin}
-                className="text-white text-base font-medium flex items-center gap-1 hover:text-[#F2B33D] transition-colors px-4 py-4"
-              >
-                Partner with us
-                <ChevronRight className="w-5 h-5" />
-              </button>
+              <div ref={ctaRef}>
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <Button
+                    onClick={scrollToPrograms}
+                    className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-8 py-4 text-base font-semibold flex items-center gap-2 group"
+                  >
+                    Explore Programs
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+
+                  <button
+                    onClick={scrollToJoin}
+                    className="text-white text-base font-medium flex items-center gap-1 hover:text-[#F2B33D] transition-colors px-4 py-4"
+                  >
+                    Partner with us
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Logo */}
+            <div className="hidden lg:flex justify-center lg:justify-end">
+              <div className="reveal-item bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/15 shadow-2xl">
+                <img
+                  src="/images/logo.jpg"
+                  alt="INSPIRE Development Initiative Logo"
+                  className="w-[280px] xl:w-[340px] h-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
