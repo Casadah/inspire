@@ -96,41 +96,45 @@ const TeamSection = ({ className = '' }: TeamSectionProps) => {
       className={`reveal-item rounded-2xl overflow-hidden transition-all hover:shadow-lg group ${
         highlight
           ? 'bg-[#F2B33D] text-[#0B0D10]'
-          : 'bg-white text-[#0B0D10] hover:bg-[#0B0D10] hover:text-white'
+          : 'bg-white text-[#0B0D10]'
       }`}
     >
-      <div className="relative h-48 overflow-hidden">
+      <div
+        className={`relative h-48 overflow-hidden flex items-center justify-center ${
+          highlight ? 'bg-[#F2B33D]' : 'bg-white'
+        }`}
+      >
         {image ? (
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
           />
         ) : (
           <div
             className={`w-full h-full flex items-center justify-center ${
-              highlight ? 'bg-[#F2B33D]' : 'bg-[#F6F7FA] group-hover:bg-[#1a1d22]'
+              highlight ? 'bg-[#F2B33D]' : 'bg-white'
             }`}
           >
             <User className={`w-16 h-16 ${highlight ? 'text-white' : 'text-[#F2B33D]'}`} />
           </div>
         )}
         <div
-          className={`absolute inset-0 bg-gradient-to-t ${
+          className={`absolute inset-0 bg-gradient-to-t pointer-events-none ${
             highlight
-              ? 'from-[#F2B33D]/80 to-transparent'
-              : 'from-black/60 to-transparent group-hover:from-black/80'
+              ? 'from-[#F2B33D]/30 to-transparent'
+              : 'from-black/10 to-transparent'
           }`}
         />
       </div>
 
-      <div className="p-5">
+      <div className="p-5 text-center">
         <h4 className="font-bold text-base mb-1" style={{ fontFamily: 'Sora, sans-serif' }}>
           {name}
         </h4>
         <p
           className={`text-sm ${
-            highlight ? 'text-[#0B0D10]/80' : 'text-[#6D7278] group-hover:text-white/70'
+            highlight ? 'text-[#0B0D10]/80' : 'text-[#6D7278]'
           }`}
         >
           {role}
@@ -185,14 +189,15 @@ const TeamSection = ({ className = '' }: TeamSectionProps) => {
             <Users className="w-6 h-6 text-[#F2B33D]" />
             Management Team
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-items-center">
             {team.management.map((member: TeamMember, index: number) => (
-              <TeamCard
-                key={index}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-              />
+              <div key={index} className="w-full max-w-[220px]">
+                <TeamCard
+                  name={member.name}
+                  role={member.role}
+                  image={member.image}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -228,14 +233,15 @@ const TeamSection = ({ className = '' }: TeamSectionProps) => {
             <Heart className="w-6 h-6 text-[#F2B33D]" />
             Volunteers
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-md">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-md justify-items-center">
             {team.volunteers.map((member: TeamMember, index: number) => (
-              <TeamCard
-                key={index}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-              />
+              <div key={index} className="w-full max-w-[220px]">
+                <TeamCard
+                  name={member.name}
+                  role={member.role}
+                  image={member.image}
+                />
+              </div>
             ))}
           </div>
         </div>
