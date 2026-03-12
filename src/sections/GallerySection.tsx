@@ -35,6 +35,10 @@ const GallerySection = ({ className = '' }: GallerySectionProps) => {
         { src: '/images/gallery/agenda-1.jpg', alt: 'AGENDA PROJECT image 1' },
         { src: '/images/gallery/agenda-2.jpg', alt: 'AGENDA PROJECT image 2' },
         { src: '/images/gallery/agenda-3.jpg', alt: 'AGENDA PROJECT image 3' },
+        { src: '/images/gallery/agenda-4.jpg', alt: 'AGENDA PROJECT image 4' },
+        { src: '/images/gallery/agenda-5.jpg', alt: 'AGENDA PROJECT image 5' },
+        { src: '/images/gallery/agenda-6.jpg', alt: 'AGENDA PROJECT image 6' },
+        { src: '/images/gallery/agenda-7.jpg', alt: 'AGENDA PROJECT image 7' },
       ],
     },
     {
@@ -46,6 +50,9 @@ const GallerySection = ({ className = '' }: GallerySectionProps) => {
         { src: '/images/gallery/ilgm-1.jpg', alt: 'ILGM image 1' },
         { src: '/images/gallery/ilgm-2.jpg', alt: 'ILGM image 2' },
         { src: '/images/gallery/ilgm-3.jpg', alt: 'ILGM image 3' },
+        { src: '/images/gallery/ilgm-4.jpg', alt: 'ILGM image 4' },
+        { src: '/images/gallery/ilgm-5.jpg', alt: 'ILGM image 5' },
+        { src: '/images/gallery/ilgm-6.jpg', alt: 'ILGM image 6' },
       ],
     },
     {
@@ -57,6 +64,7 @@ const GallerySection = ({ className = '' }: GallerySectionProps) => {
         { src: '/images/gallery/menshub-1.jpg', alt: 'MENS HUB image 1' },
         { src: '/images/gallery/menshub-2.jpg', alt: 'MENS HUB image 2' },
         { src: '/images/gallery/menshub-3.jpg', alt: 'MENS HUB image 3' },
+        { src: '/images/gallery/menshub-4.jpg', alt: 'MENS HUB image 4' },
       ],
     },
     {
@@ -69,18 +77,7 @@ const GallerySection = ({ className = '' }: GallerySectionProps) => {
         { src: '/images/gallery/transition-2.jpg', alt: 'Transition Project image 2' },
         { src: '/images/gallery/transition-3.jpg', alt: 'Transition Project image 3' },
       ],
-    },
-    {
-      title: 'SPEAK PROJECT',
-      description:
-        'A therapeutic round table session giving individuals space to share past experiences and struggles, targeted toward healing from traumatic backgrounds.',
-      category: 'past',
-      images: [
-        { src: '/images/gallery/speak-1.jpg', alt: 'SPEAK PROJECT image 1' },
-        { src: '/images/gallery/speak-2.jpg', alt: 'SPEAK PROJECT image 2' },
-        { src: '/images/gallery/speak-3.jpg', alt: 'SPEAK PROJECT image 3' },
-      ],
-    },
+    },    
     {
       title: 'International Day for the Girl Child 2022',
       description:
@@ -110,8 +107,7 @@ const GallerySection = ({ className = '' }: GallerySectionProps) => {
       category: 'past',
       images: [
         { src: '/images/gallery/gelengu-1.jpg', alt: 'Gelengu Youth Engagement image 1' },
-        { src: '/images/gallery/gelengu-2.jpg', alt: 'Gelengu Youth Engagement image 2' },
-        { src: '/images/gallery/gelengu-3.jpg', alt: 'Gelengu Youth Engagement image 3' },
+        { src: '/images/gallery/gelengu-2.jpg', alt: 'Gelengu Youth Engagement image 2' },        
       ],
     },
     {
