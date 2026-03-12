@@ -146,7 +146,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <Button
                     onClick={scrollToPrograms}
-                    className="bg-[#22F304] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-8 py-4 text-base font-semibold flex items-center gap-2 group"
+                    className="bg-[#22F304] hover:bg-[#F25A07] text-[#0B0D10] rounded-full px-8 py-4 text-base font-semibold flex items-center gap-2 group"
                   >
                     Explore Projects
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -154,7 +154,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
 
                   <button
                     onClick={scrollToJoin}
-                    className="text-white text-base font-medium flex items-center gap-1 hover:text-[#F2B33D] transition-colors px-4 py-4"
+                    className="text-white text-base font-medium flex items-center gap-1 hover:text-[#F25A07] transition-colors px-4 py-4"
                   >
                     Partner with us
                     <ChevronRight className="w-5 h-5" />
