@@ -25,10 +25,10 @@ const Footer = () => {
     <footer className="bg-[#0B0D10] border-t border-white/10">
       <div className="px-[9vw] py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo */}
+          {/* Logo / Name */}
           <a
             href="#"
-            className="text-white font-bold text-xl tracking-tight"
+            className="text-white font-bold text-xl tracking-tight text-center md:text-left"
             style={{ fontFamily: 'Sora, sans-serif' }}
           >
             INSPIRE DEVELOPMENT INITIATIVE
@@ -48,8 +48,8 @@ const Footer = () => {
           </nav>
 
           {/* Copyright */}
-          <p className="text-white/40 text-sm flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-[#F2B33D]" /> © {currentYear} INSPIRE INITIATIVE
+          <p className="text-white/40 text-sm flex items-center gap-1 text-center md:text-right">
+            Made with <Heart className="w-4 h-4 text-[#F2B33D]" /> © {currentYear} INSPIRE DEVELOPMENT INITIATIVE
           </p>
         </div>
       </div>
