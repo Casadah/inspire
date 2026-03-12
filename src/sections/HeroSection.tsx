@@ -109,6 +109,15 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
       </div>
 
+      {/* Top Right Logo */}
+      <div className="hidden lg:block absolute top-28 right-[9vw] z-20">
+        <img
+          src="/images/logo.jpg"
+          alt="INSPIRE Development Initiative Logo"
+          className="w-[140px] xl:w-[170px] h-auto object-contain"
+        />
+      </div>
+
       {/* Content */}
       <div ref={contentRef} className="relative z-10 h-full flex items-center">
         <div className="px-[9vw] w-full">
@@ -163,15 +172,8 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
               </div>
             </div>
 
-            {/* Top Right Logo */}
-            <div className="hidden lg:block absolute top-28 right-[9vw] z-20">
-              <img
-                src="/images/logo.jpg"
-                alt="INSPIRE Development Initiative Logo"
-                className="w-[140px] xl:w-[170px] h-auto object-contain"
-                />
-            </div>
-            </div>
+            {/* Right spacer for desktop balance */}
+            <div className="hidden lg:block" />
           </div>
         </div>
       </div>
