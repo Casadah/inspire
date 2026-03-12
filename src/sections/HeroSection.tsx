@@ -167,7 +167,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             <div className="hidden lg:flex justify-center lg:justify-end">
               <div className="reveal-item bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/15 shadow-2xl">
                 <img
-                  src="/images/logo.jpg"
+                  src="/images/logo.png"
                   alt="INSPIRE Development Initiative Logo"
                   className="w-[280px] xl:w-[340px] h-auto object-contain"
                 />
