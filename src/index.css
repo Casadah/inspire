@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 20% 97%;
+    --foreground: 220 20% 6%;
+    --card: 228 20% 97%;
+    --card-foreground: 220 20% 6%;
+    --popover: 228 20% 97%;
+    --popover-foreground: 220 20% 6%;
+    --primary: 220 20% 6%;
+    --primary-foreground: 228 20% 97%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 6%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 5% 46%;
+    --accent: 41 87% 59%;
+    --accent-foreground: 220 20% 6%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 41 87% 59%;
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 220 20% 6%;
+    --foreground: 228 20% 97%;
+    --card: 220 20% 6%;
+    --card-foreground: 228 20% 97%;
+    --popover: 220 20% 6%;
+    --popover-foreground: 228 20% 97%;
+    --primary: 228 20% 97%;
+    --primary-foreground: 220 20% 6%;
+    --secondary: 220 3.7% 15.9%;
+    --secondary-foreground: 228 20% 97%;
+    --muted: 220 3.7% 15.9%;
+    --muted-foreground: 220 5% 64.9%;
+    --accent: 41 87% 59%;
+    --accent-foreground: 220 20% 6%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 3.7% 15.9%;
+    --input: 220 3.7% 15.9%;
+    --ring: 41 87% 59%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .heading-display {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+  }
+  
+  .microcopy {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+  }
+  
+  .circle-portal {
+    border-radius: 9999px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+  }
+  
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Selection */
+::selection {
+  background: hsl(var(--accent) / 0.3);
+  color: hsl(var(--foreground));
+}
