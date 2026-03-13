@@ -77,7 +77,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     setDialogOpen(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   const templateParams = {
@@ -97,28 +97,29 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
   // 3️⃣ Show success toast immediately
   toast.success("Your message has been sent successfully!");
 
-  // 4️⃣ Send emails in the background
-  (async () => {
-    try {
-      // Send to organization
-      await emailjs.send(
-        "service_fo3tci3",
-        "template_wp754jc",
-        templateParams,
-        "J5FfjgZEwAHGV5oYq"
-      );
+  // 4️⃣ Send emails reliably in the background
+  try {
+    // Send to organization first
+    await emailjs.send(
+      "service_fo3tci3",
+      "template_wp754jc",
+      templateParams,
+      "J5FfjgZEwAHGV5oYq"
+    );
 
-      // Send auto-reply to user
-      await emailjs.send(
-        "service_fo3tci3",
-        "template_rcd693d",
-        templateParams,
-        "J5FfjgZEwAHGV5oYq"
-      );
-    } catch (error) {
-      console.error("EmailJS Error:", error);
-    }
-  })();
+    // Send auto-reply to user
+    await emailjs.send(
+      "service_fo3tci3",
+      "template_rcd693d",
+      templateParams,
+      "J5FfjgZEwAHGV5oYq"
+    );
+
+    console.log("Emails sent successfully!");
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+    toast.error("Message failed to send. Please try again.");
+  }
 };
   const selectedOption = options.find(o => o.id === dialogType);
 
