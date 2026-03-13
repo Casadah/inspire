@@ -115,15 +115,6 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     toast.error('Failed to send message. Please try again.');
   }
 };
-    toast.success(`Thank you for your interest in ${dialogType}! We'll be in touch soon.`);
-    setDialogOpen(false);
-    setFormData({ name: '', email: '', message: '' });
-
-  } catch (err) {
-    console.error(err);
-    toast.error('Failed to send message. Please try again.');
-  }
-};
 
   const selectedOption = options.find(o => o.id === dialogType);
 
