@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,11 +98,45 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     setDialogOpen(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(`Thank you for your interest in ${dialogType}! We'll be in touch soon.`);
-    setDialogOpen(false);
-    setFormData({ name: '', email: '', message: '' });
+
+    try {
+      // 1️⃣ Send message to NGO email
+      await emailjs.send(
+        'service_fo3tci3',        // EmailJS Service ID
+        'template_wp754jc',    // Template for NGO email
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          type: dialogType,
+          logo_url: 'https://inspire-ivory.vercel.app/images/logo.png', // public logo
+        },
+        'J5FfjgZEwAHGV5oYq'
+      );
+
+      // 2️⃣ Send auto-reply to the user
+      await emailjs.send(
+        'service_fo3tci3',
+        'template_rcd693d', // Template for auto-reply
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          type: dialogType,
+          logo_url: 'https://inspire-ivory.vercel.app/images/logo.png',
+        },
+        'J5FfjgZEwAHGV5oYq'
+      );
+
+      toast.success(`Thank you for your interest in ${dialogType}! We'll be in touch soon.`);
+      setDialogOpen(false);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to send message. Please try again.');
+    }
   };
 
   const selectedOption = options.find((o) => o.id === dialogType);
@@ -113,7 +148,6 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
       className={`relative w-full min-h-screen bg-[#F6F7FA] py-24 md:py-32 ${className}`}
     >
       <div className="px-[9vw]">
-        {/* Section Header */}
         <div className="mb-16 text-center">
           <span className="microcopy text-[#F2B33D] reveal-item">GET INVOLVED</span>
           <h2 className="heading-display text-[#0B0D10] mt-4 reveal-item" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
@@ -124,7 +158,6 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
           </p>
         </div>
 
-        {/* Options Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {options.map((option, index) => (
             <div
@@ -163,7 +196,6 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <div className="mt-16 text-center reveal-item">
           <p className="text-[#6D7278] mb-4">
             Have questions about how you can get involved?
@@ -178,7 +210,6 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
         </div>
       </div>
 
-      {/* Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
