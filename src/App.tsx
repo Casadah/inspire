@@ -11,7 +11,7 @@ import JoinUsSection from './sections/JoinUsSection';
 import ContactSection from './sections/ContactSection';
 import Footer from './sections/Footer';
 import GallerySection from './sections/GallerySection';
-import { Toaster } from "sonner";
+import { Toaster } from "sonner"; // ✅ import Toaster
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,7 +20,6 @@ function App() {
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Global snap for pinned sections
     const setupGlobalSnap = () => {
       const pinned = ScrollTrigger.getAll()
         .filter(st => st.vars.pin)
@@ -59,7 +58,6 @@ function App() {
       });
     };
 
-    // Delay to allow all ScrollTriggers to initialize
     const timer = setTimeout(setupGlobalSnap, 500);
 
     return () => {
@@ -90,6 +88,9 @@ function App() {
       
       {/* Footer */}
       <Footer />
+
+      {/* ✅ Toast system */}
+      <Toaster position="top-right" richColors />
     </div>
   );
 }
