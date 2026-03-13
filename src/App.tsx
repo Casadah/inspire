@@ -11,6 +11,7 @@ import JoinUsSection from './sections/JoinUsSection';
 import ContactSection from './sections/ContactSection';
 import Footer from './sections/Footer';
 import GallerySection from './sections/GallerySection';
+import { Toaster } from "sonner";
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
