@@ -82,18 +82,18 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     try {
       // 1️⃣ Send to NGO email
       await emailjs.send(
-        'YOUR_SERVICE_ID',          // replace with EmailJS Service ID
-        'JOIN_US_TEMPLATE_ID',      // replace with your template ID for NGO
+        'service_fo3tci3',          // replace with EmailJS Service ID
+        'template_wp754jc',      // replace with your template ID for NGO
         { ...formData, type: dialogType, logo_url: 'https://inspire-ivory.vercel.app/images/logo.png' },
-        'YOUR_PUBLIC_KEY'           // replace with EmailJS Public Key
+        'J5FfjgZEwAHGV5oYq'           // replace with EmailJS Public Key
       );
 
       // 2️⃣ Auto-reply to user
       await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'AUTO_REPLY_TEMPLATE_ID',   // create a separate template in EmailJS
+        'service_fo3tci3',
+        'template_rcd693d',   // create a separate template in EmailJS
         { ...formData, type: dialogType, logo_url: 'https://inspire-ivory.vercel.app/images/logo.png' },
-        'YOUR_PUBLIC_KEY'
+        'J5FfjgZEwAHGV5oYq'
       );
 
       toast.success(`Thank you for your interest in ${dialogType}! We'll be in touch soon.`);
