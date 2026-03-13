@@ -77,7 +77,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     setDialogOpen(true);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
 
   const templateParams = {
@@ -88,37 +88,37 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     logo_url: "https://inspire-ivory.vercel.app/images/logo.png",
   };
 
-  try {
+  // 1️⃣ Close popup immediately
+  setDialogOpen(false);
 
-    await emailjs.send(
-      "service_fo3tci3",
-      "template_wp754jc",
-      templateParams,
-      "J5FfjgZEwAHGV5oYq"
-    );
+  // 2️⃣ Clear form immediately
+  setFormData({ name: "", email: "", message: "" });
 
-    toast.success("Your message has been sent successfully!");
+  // 3️⃣ Show success toast immediately
+  toast.success("Your message has been sent successfully!");
 
-    setDialogOpen(false);
+  // 4️⃣ Send emails in the background
+  (async () => {
+    try {
+      // Send to organization
+      await emailjs.send(
+        "service_fo3tci3",
+        "template_wp754jc",
+        templateParams,
+        "J5FfjgZEwAHGV5oYq"
+      );
 
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-
-    // Auto reply (separate so it doesn't break UI)
-    emailjs.send(
-      "service_fo3tci3",
-      "template_rcd693d",
-      templateParams,
-      "J5FfjgZEwAHGV5oYq"
-    );
-
-  } catch (error) {
-    console.error(error);
-    toast.error("Failed to send message. Please try again.");
-  }
+      // Send auto-reply to user
+      await emailjs.send(
+        "service_fo3tci3",
+        "template_rcd693d",
+        templateParams,
+        "J5FfjgZEwAHGV5oYq"
+      );
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+    }
+  })();
 };
   const selectedOption = options.find(o => o.id === dialogType);
 
