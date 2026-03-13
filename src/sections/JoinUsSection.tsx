@@ -88,12 +88,11 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     logo_url: "https://inspire-ivory.vercel.app/images/logo.png",
   };
 
-  // 1️⃣ Close popup and show toast immediately
+  // 1️⃣ Close popup and show initial toast immediately
   setDialogOpen(false);
   toast.success("Your message is being sent...");
 
-  // 2️⃣ Save form data before clearing
-  const currentFormData = { ...formData };
+  // 2️⃣ Clear form immediately
   setFormData({ name: "", email: "", message: "" });
 
   try {
