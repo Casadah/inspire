@@ -80,37 +80,41 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
+  // Close dialog immediately
+  setDialogOpen(false);
+
+  const templateParams = {
+    from_name: formData.name,
+    from_email: formData.email,
+    message: formData.message,
+    type: dialogType,
+    logo_url: 'https://inspire-ivory.vercel.app/images/logo.png',
+  };
+
   try {
     await Promise.all([
-      // 1️⃣ Send to NGO email
       emailjs.send(
         'service_fo3tci3',
         'template_wp754jc',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          type: dialogType,
-          logo_url: 'https://inspire-ivory.vercel.app/images/logo.png',
-        },
+        templateParams,
         'J5FfjgZEwAHGV5oYq'
       ),
-
-      // 2️⃣ Auto-reply to user
       emailjs.send(
         'service_fo3tci3',
         'template_rcd693d',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          type: dialogType,
-          logo_url: 'https://inspire-ivory.vercel.app/images/logo.png',
-        },
+        templateParams,
         'J5FfjgZEwAHGV5oYq'
       )
     ]);
 
+    toast.success(`Thank you for your interest in ${dialogType}! We'll be in touch soon.`);
+    setFormData({ name: '', email: '', message: '' });
+
+  } catch (err) {
+    console.error(err);
+    toast.error('Failed to send message. Please try again.');
+  }
+};
     toast.success(`Thank you for your interest in ${dialogType}! We'll be in touch soon.`);
     setDialogOpen(false);
     setFormData({ name: '', email: '', message: '' });
