@@ -84,7 +84,8 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     from_name: formData.name,
     from_email: formData.email,
     message: formData.message,
-    type: dialogType,    
+    type: dialogType,
+    logo_url: "https://inspire-ivory.vercel.app/images/logo.png",
   };
 
   // 1️⃣ Close popup and show initial toast immediately
@@ -128,8 +129,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     <section ref={sectionRef} id="join" className={`relative w-full min-h-screen bg-[#F6F7FA] py-24 md:py-32 ${className}`}>
       <div className="px-[9vw]">
         {/* Section Header */}
-        <div className="mb-16 text-center">
-          <img src="/images/logo.png" alt="Inspire Ivory Logo" width={150} style={{ marginBottom: 20 }} />
+        <div className="mb-16 text-center">          
           <span className="microcopy text-[#F2B33D] reveal-item">GET INVOLVED</span>
           <h2 className="heading-display text-[#0B0D10] mt-4 reveal-item" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
             JOIN THE MOVEMENT
