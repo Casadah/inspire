@@ -88,11 +88,8 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     logo_url: "https://inspire-ivory.vercel.app/images/logo.png",
   };
 
-  setDialogOpen(false);
-
   try {
 
-    // Send email to organization
     await emailjs.send(
       "service_fo3tci3",
       "template_wp754jc",
@@ -100,32 +97,27 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
       "J5FfjgZEwAHGV5oYq"
     );
 
-    // Show success immediately
-    toast.success("Message sent successfully!");
+    toast.success("Your message has been sent successfully!");
 
-    // Clear form
+    setDialogOpen(false);
+
     setFormData({
       name: "",
       email: "",
       message: "",
     });
 
-  } catch (error) {
-    console.error("ORG EMAIL ERROR:", error);
-    toast.error("Message failed to send.");
-    return;
-  }
-
-  // Try auto reply separately
-  try {
-    await emailjs.send(
+    // Auto reply (separate so it doesn't break UI)
+    emailjs.send(
       "service_fo3tci3",
       "template_rcd693d",
       templateParams,
       "J5FfjgZEwAHGV5oYq"
     );
+
   } catch (error) {
-    console.warn("Auto reply failed:", error);
+    console.error(error);
+    toast.error("Failed to send message. Please try again.");
   }
 };
   const selectedOption = options.find(o => o.id === dialogType);
