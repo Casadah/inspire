@@ -25,7 +25,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Six-month training for 20 young males through mentoring, coaching, and role modeling to create a new mindset.',
         impact: 'Building confident young men for tomorrow',
         icon: Users,
-        image: '/images/menshub.jpg',
+        image: '/images/gallery/menshub-1.jpg',
         fullDescription: 'MENS HUB addresses the unique challenges faced by young men in our communities. Through mentorship from positive role models, participants develop emotional intelligence, leadership skills, and a sense of responsibility.',
       },
       {
@@ -44,7 +44,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         schools: ['Baptist Academy', 'Ilimi International College', 'Yafi Academy'],
         location: 'Gombe',
         icon: GraduationCap,
-        image: '/images/Agenda.jpg',
+        image: '/images//gallery/agenda-1.jpg',
         fullDescription: 'As part of the A’GENDA Project, a pilot capacity-building training was conducted in three secondary schools in Gombe State to promote self-discovery and personal responsibility among students. The training engaged 135 students (66 girls and 69 boys) from Ilimi International College, Yafi Academy Tunfure, and Baptist Academy Gombe. Through interactive sessions, participants were guided to better understand themselves, build positive values, and develop a stronger sense of responsibility toward their education and personal growth.',
       },
       {
@@ -53,7 +53,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         impact: 'Cohort one admitted 30 young women',
         phases: ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4'],
         icon: Users,
-        image: '/images/lgm.jpg',
+        image: '/images/gallery/ilgm-1.jpg',
         fullDescription: 'ILGM is a transformative one-year journey designed to guide young women toward discovering their purpose and achieving their dreams. The program combines in-person seminars, virtual learning sessions, one-on-one coaching, and peer support networks.',
       },
       {
@@ -61,7 +61,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Targeted at young teenagers, equipping them with knowledge on self-discovery and social etiquette for successful transition into adulthood.',
         locations: ['ECWA Gospel Gombe', 'ECWA Goodnews Federal Low Cost'],
         icon: TrendingUp,
-        image: '/images/transition.jpg',
+        image: '/images/gallery/transition-1.jpg',
         fullDescription: 'The Transition Project helped hundreds of teenagers navigate the challenging journey from adolescence to adulthood. Participants learned essential life skills including communication, decision-making, and personal responsibility.',
       },
       {
@@ -69,7 +69,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Engagement celebrating and empowering young girls in the community.',
         location: 'Shongo Idirisa',
         icon: Calendar,
-        image: '/images/school.jpg',
+        image: '/images/gallery/girlchild-1.jpg',
         fullDescription: 'Our International Day for the Girl Child celebration brought together girls from across the community for a day of inspiration, education, and empowerment.',
       },
       {
@@ -77,7 +77,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Community dialogue fostering peaceful coexistence and understanding.',
         location: 'Billiri',
         icon: MessageCircle,
-        image: '/images/peace1.jpg',
+        image: '/images/gallery/billiri-1.jpg',
         fullDescription: 'The Peace Dialogue at Billiri brought together community leaders and residents to discuss challenges and build bridges toward peaceful coexistence.',
       },
       {
@@ -85,7 +85,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Youth engagement on taking responsibility for community development.',
         location: 'Gelengu',
         icon: Users,
-        image: '/images/gelengu.jpg',
+        image: '/images/gallery/gelengu-1.jpg',
         fullDescription: 'This engagement empowered youth in Gelengu to take active roles in shaping their community\'s future through responsibility and leadership.',
       },
       {
@@ -93,7 +93,7 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
         description: 'Partnership with USGS on peaceful co-existence of all religions in Gombe.',
         location: 'Gombe',
         icon: MessageCircle,
-        image: '/images/peace.jpg',
+        image: '/images/gallery/gombe-peace-1.jpg',
         fullDescription: 'In partnership with USGS, this dialogue brought together religious leaders and community members to promote understanding and peaceful coexistence across faiths.',
       },
     ],
