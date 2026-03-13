@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import emailjs from '@emailjs/browser'; // ✅ Must be installed
+import emailjs from '@emailjs/browser'; // ✅ Import EmailJS
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,11 +19,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogType, setDialogType] = useState<'donate' | 'partner' | 'volunteer'>('donate');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const options = [
     {
@@ -56,7 +52,10 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     const section = sectionRef.current;
     if (!section) return;
     const ctx = gsap.context(() => {
-      gsap.fromTo(section.querySelectorAll('.reveal-item'), { y:40, opacity:0 }, { y:0, opacity:1, duration:0.8, stagger:0.1, ease:'power2.out', scrollTrigger:{ trigger:section, start:'top 70%', toggleActions:'play none none reverse' } });
+      gsap.fromTo(section.querySelectorAll('.reveal-item'),
+        { y:40, opacity:0 },
+        { y:0, opacity:1, duration:0.8, stagger:0.1, ease:'power2.out', scrollTrigger:{ trigger:section, start:'top 70%', toggleActions:'play none none reverse' } }
+      );
     }, section);
     return () => ctx.revert();
   }, []);
@@ -69,7 +68,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // Send message to NGO
+      // 1️⃣ Send to NGO
       await emailjs.send(
         'service_fo3tci3',
         'template_wp754jc',
@@ -83,7 +82,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
         'J5FfjgZEwAHGV5oYq'
       );
 
-      // Auto-reply to user
+      // 2️⃣ Send auto-reply to user
       await emailjs.send(
         'service_fo3tci3',
         'template_rcd693d',
@@ -106,7 +105,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     }
   };
 
-  const selectedOption = options.find((o)=>o.id===dialogType);
+  const selectedOption = options.find(o => o.id === dialogType);
 
   return (
     <section ref={sectionRef} id="join" className={`relative w-full min-h-screen bg-[#F6F7FA] py-24 md:py-32 ${className}`}>
@@ -114,10 +113,13 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
         <div className="mb-16 text-center">
           <span className="microcopy text-[#F2B33D] reveal-item">GET INVOLVED</span>
           <h2 className="heading-display text-[#0B0D10] mt-4 reveal-item" style={{ fontSize:'clamp(32px,4vw,56px)' }}>JOIN THE MOVEMENT</h2>
-          <p className="text-[#6D7278] text-lg mt-4 max-w-2xl mx-auto reveal-item">Support our work with a donation, partner with us, or volunteer your time and skills.</p>
+          <p className="text-[#6D7278] text-lg mt-4 max-w-2xl mx-auto reveal-item">
+            Support our work with a donation, partner with us, or volunteer your time and skills.
+          </p>
         </div>
+
         <div className="grid md:grid-cols-3 gap-8">
-          {options.map((option,index)=>(
+          {options.map((option, index)=>(
             <div key={index} className="reveal-item bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 group">
               <div className="w-16 h-16 bg-[#F2B33D]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#F2B33D] transition-colors">
                 <option.icon className="w-8 h-8 text-[#F2B33D] group-hover:text-white transition-colors"/>
@@ -137,11 +139,13 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
             </div>
           ))}
         </div>
+
         <div className="mt-16 text-center reveal-item">
           <p className="text-[#6D7278] mb-4">Have questions about how you can get involved?</p>
           <a href="#contact" className="text-[#F2B33D] font-semibold hover:underline inline-flex items-center gap-2">Contact us <ArrowRight className="w-4 h-4"/></a>
         </div>
       </div>
+
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -151,15 +155,15 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
           <form onSubmit={handleSubmit} className="space-y-4 mt-4">
             <div>
               <label className="text-sm font-medium text-[#0B0D10] mb-2 block">Name</label>
-              <Input value={formData.name} onChange={(e)=>setFormData({...formData,name:e.target.value})} placeholder="Your name" required className="rounded-xl"/>
+              <Input value={formData.name} onChange={e=>setFormData({...formData,name:e.target.value})} placeholder="Your name" required className="rounded-xl"/>
             </div>
             <div>
               <label className="text-sm font-medium text-[#0B0D10] mb-2 block">Email</label>
-              <Input type="email" value={formData.email} onChange={(e)=>setFormData({...formData,email:e.target.value})} placeholder="your@email.com" required className="rounded-xl"/>
+              <Input type="email" value={formData.email} onChange={e=>setFormData({...formData,email:e.target.value})} placeholder="your@email.com" required className="rounded-xl"/>
             </div>
             <div>
               <label className="text-sm font-medium text-[#0B0D10] mb-2 block">Message</label>
-              <Textarea value={formData.message} onChange={(e)=>setFormData({...formData,message:e.target.value})} placeholder={`Tell us why you'd like to ${dialogType}...`} rows={4} required className="rounded-xl resize-none"/>
+              <Textarea value={formData.message} onChange={e=>setFormData({...formData,message:e.target.value})} placeholder={`Tell us why you'd like to ${dialogType}...`} rows={4} required className="rounded-xl resize-none"/>
             </div>
             <Button type="submit" className="w-full bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full py-3 font-semibold">Submit</Button>
           </form>
