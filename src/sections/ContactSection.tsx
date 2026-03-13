@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,11 +16,7 @@ interface ContactSectionProps {
 
 const ContactSection = ({ className = '' }: ContactSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [contactForm, setContactForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
   const [newsletterEmail, setNewsletterEmail] = useState('');
 
   useLayoutEffect(() => {
@@ -48,10 +45,43 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
     return () => ctx.revert();
   }, []);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Message sent! We\'ll get back to you within two business days.');
+
+    const templateParams = {
+      from_name: contactForm.name,
+      from_email: contactForm.email,
+      message: contactForm.message,
+      logo_url: "https://inspire-ivory.vercel.app/images/logo.png",
+    };
+
+    // Close form and show toast immediately
     setContactForm({ name: '', email: '', message: '' });
+    toast.success("Your message is being sent...");
+
+    try {
+      // Send to organization
+      await emailjs.send(
+        "service_fo3tci3",      // EmailJS Service ID
+        "template_wp754jc",      // EmailJS Template ID for NGO
+        templateParams,
+        "J5FfjgZEwAHGV5oYq"    // EmailJS Public Key
+      );
+
+      // Optional: Auto-reply to user
+      await emailjs.send(
+        "service_fo3tci3",
+        "template_rcd693d",     // EmailJS Template ID for auto-reply
+        templateParams,
+        "J5FfjgZEwAHGV5oYq"
+      );
+
+      toast.success("Message sent successfully! Check your inbox for confirmation.");
+
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast.error("Failed to send message. Please try again.");
+    }
   };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -63,11 +93,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="contact"
-      className={`relative w-full bg-[#0B0D10] py-24 md:py-32 ${className}`}
-    >
+    <section ref={sectionRef} id="contact" className={`relative w-full bg-[#0B0D10] py-24 md:py-32 ${className}`}>
       <div className="px-[9vw]">
         {/* Section Header */}
         <div className="mb-16">
@@ -85,21 +111,20 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
           <div>
             {/* Contact Details */}
             <div className="space-y-6 mb-12">
+              {/* Email */}
               <div className="reveal-item flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#F2B33D]/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Mail className="w-5 h-5 text-[#F2B33D]" />
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email</h4>
-                  <a
-                    href="mailto:inspireinitiative1@gmail.com"
-                    className="text-white/60 hover:text-[#F2B33D] transition-colors"
-                  >
+                  <a href="mailto:inspireinitiative1@gmail.com" className="text-white/60 hover:text-[#F2B33D] transition-colors">
                     inspireinitiative1@gmail.com
                   </a>
                 </div>
               </div>
 
+              {/* Location */}
               <div className="reveal-item flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#F2B33D]/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5 text-[#F2B33D]" />
@@ -110,6 +135,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                 </div>
               </div>
 
+              {/* Social */}
               <div className="reveal-item flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#F2B33D]/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Send className="w-5 h-5 text-[#F2B33D]" />
@@ -117,24 +143,13 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                 <div>
                   <h4 className="text-white font-semibold mb-1">Social Media</h4>
                   <div className="flex gap-4 mt-2">
-                    <a
-                      href="https://www.facebook.com/inspiredevelopmentinitiative/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/60 hover:text-[#F2B33D] transition-colors"
-                    >
+                    <a href="https://www.facebook.com/inspiredevelopmentinitiative/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#F2B33D] transition-colors">
                       <Facebook className="w-5 h-5" />
                     </a>
-                    <a
-                      href="#"
-                      className="text-white/60 hover:text-[#F2B33D] transition-colors"
-                    >
+                    <a href="#" className="text-white/60 hover:text-[#F2B33D] transition-colors">
                       <Instagram className="w-5 h-5" />
                     </a>
-                    <a
-                      href="#"
-                      className="text-white/60 hover:text-[#F2B33D] transition-colors"
-                    >
+                    <a href="#" className="text-white/60 hover:text-[#F2B33D] transition-colors">
                       <Linkedin className="w-5 h-5" />
                     </a>
                   </div>
@@ -159,10 +174,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                   required
                   className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-full px-5"
                 />
-                <Button
-                  type="submit"
-                  className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-6 font-semibold"
-                >
+                <Button type="submit" className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-6 font-semibold">
                   Subscribe
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -213,10 +225,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full py-4 font-semibold flex items-center justify-center gap-2"
-                >
+                <Button type="submit" className="w-full bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full py-4 font-semibold flex items-center justify-center gap-2">
                   Send Message
                   <Send className="w-4 h-4" />
                 </Button>
