@@ -84,8 +84,7 @@ const JoinUsSection = ({ className = '' }: JoinUsSectionProps) => {
     from_name: formData.name,
     from_email: formData.email,
     message: formData.message,
-    type: dialogType,
-    logo_url: "https://inspire-ivory.vercel.app/images/logo.png",
+    type: dialogType,    
   };
 
   // 1️⃣ Close popup and show initial toast immediately
