@@ -39,13 +39,13 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
     ],
     past: [
       {
-        title: 'AGENDA PROJECT',
-        description: 'To empower 450 young women for a vibrant and productive society through school engagements and skills training.',
+        title: 'AGENDA PROJECT-SCHOOL ENGAGEMENT',
+        description: 'A capacity training for 135 Secondary school students on Personal Identity and Taking responsibility',
         schools: ['Baptist Academy', 'Ilimi International College', 'Yafi Academy'],
         location: 'Gombe',
         icon: GraduationCap,
         image: '/images/Agenda.jpg',
-        fullDescription: 'The AGENDA PROJECT is our flagship initiative aimed at empowering young women across Gombe State. Through strategic partnerships with leading educational institutions, we provide comprehensive training in leadership, life skills, and vocational education.',
+        fullDescription: 'As part of the A’GENDA Project, a pilot capacity-building training was conducted in three secondary schools in Gombe State to promote self-discovery and personal responsibility among students. The training engaged 135 students (66 girls and 69 boys) from Ilimi International College, Yafi Academy Tunfure, and Baptist Academy Gombe. Through interactive sessions, participants were guided to better understand themselves, build positive values, and develop a stronger sense of responsibility toward their education and personal growth.',
       },
       {
         title: 'ILGM (Inspire Logical Girl Meet)',
@@ -101,13 +101,13 @@ const ProjectsSection = ({ className = '' }: ProjectsSectionProps) => {
       {
         title: 'LADU Project',
         description: 'Upcoming initiative focused on leadership and development in underserved communities.',
-        status: 'Coming Soon',
+        status: 'In Planning',
         icon: TrendingUp,
         image: '/images/ladu.jpg',
         fullDescription: 'The LADU Project will expand our reach to underserved communities, bringing leadership training and development opportunities to those who need them most.',
       },
       {
-        title: 'Inhouse Trainings Expansion',
+        title: 'Inhouse Trainings',
         description: 'Expanding capacity building programs for teams and partner organizations.',
         status: 'In Planning',
         icon: GraduationCap,
