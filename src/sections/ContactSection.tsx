@@ -94,7 +94,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
 
     try {
       const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbxo6wwsZctikPPyUXFb89OVcc3M7_CFoQmUTh-mW54w7gE2g0qGg4emvaCiVVDBJSmgRQ/exec",
+        "https://script.google.com/macros/s/AKfycbwg5ycaddzzNorgWKJqujsPDlA6XF4TickUhxBT8ZU49qGv9-Z2wrreeR1mY6fCoid_-g/exec",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
