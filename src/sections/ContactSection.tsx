@@ -85,15 +85,14 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
   };
 
   // Newsletter submission to Google Sheets
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail || !firstName) return;
-
-    try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycby4KJ3d71vfTCD-H2DdJCUKkUg9RQE_A3Ygqq3LY7XEn-1OhnzD8Bh9bV5-nNJYtPCKLQ/exec", {
-        method: "POST",
-        body: JSON.stringify({ firstName, email: newsletterEmail }),
-      });
+  const res = await fetch("https://script.google.com/macros/s/AKfycbxo6wwsZctikPPyUXFb89OVcc3M7_CFoQmUTh-mW54w7gE2g0qGg4emvaCiVVDBJSmgRQ/exec", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    firstName: firstName.trim(),
+    email: newsletterEmail.trim()
+  }),
+});
       const data = await res.json();
 
       if (data.success) {
