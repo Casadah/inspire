@@ -16,9 +16,10 @@ interface ContactSectionProps {
 
 const ContactSection = ({ className = '' }: ContactSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
+
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
   const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [loadingNewsletter, setLoadingNewsletter] = useState(false);
+  const [firstName, setFirstName] = useState('');
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -46,7 +47,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
     return () => ctx.revert();
   }, []);
 
-  // Contact Form Submission
+  // Contact form submission
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const templateParams = {
@@ -60,44 +61,51 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
     toast.success("Your message is being sent...");
 
     try {
+      // Send message to organization
       await emailjs.send(
         "service_fo3tci3",
         "template_wp754jc",
         templateParams,
         "J5FfjgZEwAHGV5oYq"
       );
+
+      // Optional auto-reply
       await emailjs.send(
         "service_fo3tci3",
         "template_rcd693d",
         templateParams,
         "J5FfjgZEwAHGV5oYq"
       );
+
       toast.success("Message sent successfully!");
     } catch (error) {
-      console.error("EmailJS Error:", error);
+      console.error(error);
       toast.error("Failed to send message. Please try again.");
     }
   };
 
-  // Newsletter Submission (Mailchimp inline)
+  // Newsletter submission to Google Sheets
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newsletterEmail) return;
+    if (!newsletterEmail || !firstName) return;
 
-    setLoadingNewsletter(true);
     try {
-      const MAILCHIMP_URL = "https://YOUR-MAILCHIMP-URL"; // replace with your Mailchimp action URL
-      await fetch(MAILCHIMP_URL + `&EMAIL=${encodeURIComponent(newsletterEmail)}`, {
-        method: 'POST',
-        mode: 'no-cors',
+      const res = await fetch("YOUR_GOOGLE_WEBAPP_URL", {
+        method: "POST",
+        body: JSON.stringify({ firstName, email: newsletterEmail }),
       });
-      toast.success('Thank you for subscribing to our newsletter!');
-      setNewsletterEmail('');
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Thank you for subscribing!");
+        setNewsletterEmail('');
+        setFirstName('');
+      } else {
+        toast.error("Subscription failed. Try again.");
+      }
     } catch (err) {
       console.error(err);
-      toast.error('Subscription failed. Please try again.');
-    } finally {
-      setLoadingNewsletter(false);
+      toast.error("Subscription failed. Try again.");
     }
   };
 
@@ -116,10 +124,10 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Left Column - Contact Info + Newsletter */}
-          <div className="space-y-12">
-            {/* Contact Info */}
-            <div className="space-y-6">
+          {/* Left Column - Contact Info & Newsletter */}
+          <div>
+            {/* Contact Details */}
+            <div className="space-y-6 mb-12">
               {/* Email */}
               <div className="reveal-item flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#F2B33D]/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -144,7 +152,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                 </div>
               </div>
 
-              {/* Social */}
+              {/* Social Media */}
               <div className="reveal-item flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#F2B33D]/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Send className="w-5 h-5 text-[#F2B33D]" />
@@ -174,22 +182,26 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
               <p className="text-white/60 text-sm mb-6">
                 Stay updated with our latest programs, success stories, and opportunities to get involved.
               </p>
-              <form onSubmit={handleNewsletterSubmit} className="flex gap-3">
+
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col md:flex-row gap-3">
+                <Input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="First Name"
+                  required
+                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-full px-5 py-3"
+                />
                 <Input
                   type="email"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  placeholder="Email"
                   required
-                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-full px-5"
-                  disabled={loadingNewsletter}
+                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-full px-5 py-3"
                 />
-                <Button
-                  type="submit"
-                  className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-6 font-semibold flex items-center gap-2"
-                  disabled={loadingNewsletter}
-                >
-                  {loadingNewsletter ? 'Submitting...' : 'Subscribe'}
+                <Button type="submit" className="bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full px-6 py-3 font-semibold flex items-center justify-center gap-2">
+                  Subscribe
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </form>
@@ -202,6 +214,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
               <h4 className="text-[#0B0D10] font-bold text-xl mb-6" style={{ fontFamily: 'Sora, sans-serif' }}>
                 Send us a Message
               </h4>
+
               <div className="space-y-5">
                 <div>
                   <label className="text-sm font-medium text-[#0B0D10] mb-2 block">Name</label>
@@ -213,6 +226,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                     className="rounded-xl border-[#E5E7EB] focus:border-[#F2B33D] focus:ring-[#F2B33D]"
                   />
                 </div>
+
                 <div>
                   <label className="text-sm font-medium text-[#0B0D10] mb-2 block">Email</label>
                   <Input
@@ -224,6 +238,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                     className="rounded-xl border-[#E5E7EB] focus:border-[#F2B33D] focus:ring-[#F2B33D]"
                   />
                 </div>
+
                 <div>
                   <label className="text-sm font-medium text-[#0B0D10] mb-2 block">Message</label>
                   <Textarea
@@ -235,6 +250,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                     className="rounded-xl border-[#E5E7EB] focus:border-[#F2B33D] focus:ring-[#F2B33D] resize-none"
                   />
                 </div>
+
                 <Button type="submit" className="w-full bg-[#F2B33D] hover:bg-[#e0a336] text-[#0B0D10] rounded-full py-4 font-semibold flex items-center justify-center gap-2">
                   Send Message
                   <Send className="w-4 h-4" />
@@ -248,4 +264,4 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
   );
 };
 
-export default ContactSection;
+export { ContactSection };
