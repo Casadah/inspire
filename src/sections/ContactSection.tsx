@@ -90,7 +90,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
   if (!newsletterEmail || !firstName) return;
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbwGO_BTOThF871AkufbBGo2dC2BDl4yz4wr56uke-dU3YAHFel09W8GlLZb1LCEj8w8-w/exec", {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbx4-EgknXPKYnPhbZq_aqg0-Sqh-JcCBDsd3zrPwjGJuHVyEoshdSDr6bSUIWsXUHAWgw/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ firstName, email: newsletterEmail }),
