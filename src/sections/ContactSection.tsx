@@ -85,31 +85,17 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
   };
 
   // Newsletter submission to Google Sheets
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!newsletterEmail || !firstName) return;
+  const formData = new FormData();
+formData.append("entry.1368424734", firstName); // First Name
+formData.append("entry.444988357", newsletterEmail); // Email
 
-  try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbx4-EgknXPKYnPhbZq_aqg0-Sqh-JcCBDsd3zrPwjGJuHVyEoshdSDr6bSUIWsXUHAWgw/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ firstName, email: newsletterEmail }),
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      toast.success("Thank you for subscribing!");
-      setNewsletterEmail('');
-      setFirstName('');
-    } else {
-      toast.error("Subscription failed: " + (data.error || "Try again"));
-    }
-  } catch (err) {
-    console.error(err);
-    toast.error("Subscription failed. Try again.");
+await fetch(
+  "https://docs.google.com/forms/d/e/1FAIpQLSdeXOD_7b9BSdCcl1Jd03oMP5hixVo6J7zZIUpd4DtJK2snlA/viewform?usp=dialog", // replace with your form’s full POST URL
+  {
+    method: "POST",
+    body: formData
   }
-};
+);
   return (
     <section ref={sectionRef} id="contact" className={`relative w-full bg-[#0B0D10] py-24 md:py-32 ${className}`}>
       <div className="px-[9vw]">
