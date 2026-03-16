@@ -86,40 +86,30 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
 
   // Newsletter submission to Google Sheets
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail.trim() || !firstName.trim()) {
-      toast.error("Please fill in all fields.");
-      return;
+  e.preventDefault();
+  if (!newsletterEmail || !firstName) return;
+
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbwGO_BTOThF871AkufbBGo2dC2BDl4yz4wr56uke-dU3YAHFel09W8GlLZb1LCEj8w8-w/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firstName, email: newsletterEmail }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      toast.success("Thank you for subscribing!");
+      setNewsletterEmail('');
+      setFirstName('');
+    } else {
+      toast.error("Subscription failed: " + (data.error || "Try again"));
     }
-
-    try {
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbwg5ycaddzzNorgWKJqujsPDlA6XF4TickUhxBT8ZU49qGv9-Z2wrreeR1mY6fCoid_-g/exec",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            firstName: firstName.trim(),
-            email: newsletterEmail.trim(),
-          }),
-        }
-      );
-
-      const data = await res.json();
-
-      if (data.success) {
-        toast.success("Thank you for subscribing!");
-        setNewsletterEmail('');
-        setFirstName('');
-      } else {
-        toast.error(`Subscription failed: ${data.error || "Try again."}`);
-      }
-    } catch (err) {
-      console.error("Newsletter error:", err);
-      toast.error("Subscription failed. Try again.");
-    }
-  };
-
+  } catch (err) {
+    console.error(err);
+    toast.error("Subscription failed. Try again.");
+  }
+};
   return (
     <section ref={sectionRef} id="contact" className={`relative w-full bg-[#0B0D10] py-24 md:py-32 ${className}`}>
       <div className="px-[9vw]">
