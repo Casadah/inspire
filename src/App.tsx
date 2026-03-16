@@ -8,7 +8,8 @@ import ProjectsSection from './sections/ProjectsSection';
 import TeamSection from './sections/TeamSection';
 import SuccessStoriesSection from './sections/SuccessStoriesSection';
 import JoinUsSection from './sections/JoinUsSection';
-import ContactSection from './sections/ContactSection';
+// ✅ Updated import to named export
+import { ContactSection } from './sections/ContactSection';
 import Footer from './sections/Footer';
 import GallerySection from './sections/GallerySection';
 import { Toaster } from "sonner"; // ✅ import Toaster
