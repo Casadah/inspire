@@ -85,14 +85,26 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
   };
 
   // Newsletter submission to Google Sheets
-  const res = await fetch("https://script.google.com/macros/s/AKfycbxo6wwsZctikPPyUXFb89OVcc3M7_CFoQmUTh-mW54w7gE2g0qGg4emvaCiVVDBJSmgRQ/exec", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    firstName: firstName.trim(),
-    email: newsletterEmail.trim()
-  }),
-});
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim() || !firstName.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbxo6wwsZctikPPyUXFb89OVcc3M7_CFoQmUTh-mW54w7gE2g0qGg4emvaCiVVDBJSmgRQ/exec",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: firstName.trim(),
+            email: newsletterEmail.trim(),
+          }),
+        }
+      );
+
       const data = await res.json();
 
       if (data.success) {
@@ -100,10 +112,10 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
         setNewsletterEmail('');
         setFirstName('');
       } else {
-        toast.error("Subscription failed. Try again.");
+        toast.error(`Subscription failed: ${data.error || "Try again."}`);
       }
     } catch (err) {
-      console.error(err);
+      console.error("Newsletter error:", err);
       toast.error("Subscription failed. Try again.");
     }
   };
