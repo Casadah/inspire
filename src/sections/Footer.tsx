@@ -30,7 +30,7 @@ const Footer = () => {
             className="text-white font-bold text-xl tracking-tight text-center md:text-left"
             style={{ fontFamily: 'Sora, sans-serif' }}
           >
-            INSPIRE DEVELOPMENT INITIATIVE
+            SPARK INITIATIVE FOR SOCIAL, ECONOMIC, AND SUSTAINABLE CHANGE
           </a>
 
           {/* Links */}
@@ -48,7 +48,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-white/40 text-sm flex items-center gap-1 text-center md:text-right">
-            © {currentYear} INSPIRE DEVELOPMENT INITIATIVE
+            © {currentYear} SPARK INITIATIVE FOR SOCIAL, ECONOMIC, AND SUSTAINABLE CHANGE
           </p>
 
         </div>
