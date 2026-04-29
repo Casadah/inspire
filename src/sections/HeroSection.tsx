@@ -114,7 +114,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         <img
           src="/images/logo.png"
           alt="INSPIRE Development Initiative Logo"
-          className="w-[140px] xl:w-[170px] h-auto object-contain"
+          className="w-[220px] xl:w-[280px] h-auto object-contain"
         />
       </div>
 
