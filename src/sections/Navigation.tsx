@@ -52,7 +52,7 @@ const Navigation = () => {
             className="text-left text-[#0B0D10] font-bold tracking-tight leading-tight"
             style={{ fontFamily: 'Sora, sans-serif' }}
           >
-            <span className="block text-lg md:text-xl">INSPIRE DEVELOPMENT INITIATIVE</span>
+            <span className="block text-lg md:text-xl">SPARK INITIATIVE FOR SOCIAL, ECONOMIC, AND SUSTAINABLE CHANGE (INSPIRE)</span>
           </button>
 
           {/* Desktop Navigation */}
