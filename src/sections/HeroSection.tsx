@@ -110,7 +110,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
       </div>
 
       {/* Top Right Logo */}
-      <div className="hidden lg:block absolute -top-2 -right-2 z-20">
+      <div className="hidden lg:block absolute top-2 right-0 z-20">
         <img
           src="/images/logo.png"
           alt="INSPIRE Development Initiative Logo"
