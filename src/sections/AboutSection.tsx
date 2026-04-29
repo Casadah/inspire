@@ -87,10 +87,10 @@ const AboutSection = ({ className = '' }: AboutSectionProps) => {
         <div className="mb-16">
           <span className="microcopy text-[#F2B33D] reveal-item">ABOUT US</span>
           <h2 className="heading-display text-[#0B0D10] mt-4 reveal-item" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
-            INSPIRE INITIATIVE
+            SPARK INITIATIVE FOR SOCIAL, ECONOMIC, AND SUSTAINABLE CHANGE
           </h2>
           <p className="text-[#6D7278] text-lg mt-4 max-w-2xl reveal-item">
-            SPARK Initiative for Social Economic and Sustainable Change
+            (INSPIRE DEVELOPMENT INITIATIVE)
           </p>
         </div>
 
@@ -105,8 +105,7 @@ const AboutSection = ({ className = '' }: AboutSectionProps) => {
               Our Vision
             </h3>
             <p className="text-[#6D7278] leading-relaxed">
-              To spur out uniqueness in communities by lighting hope and communicating success 
-              through visual exposition, coaching, and mentorship.
+              To spur out uniqueness in communities.
             </p>
           </div>
 
@@ -119,8 +118,7 @@ const AboutSection = ({ className = '' }: AboutSectionProps) => {
               Our Mission
             </h3>
             <p className="text-[#6D7278] leading-relaxed">
-              To light hope in communities and communicate success through visual exposition, 
-              coaching, and mentorship programs that empower individuals to reach their full potential.
+              To light hope in communities andcommunicate successthroughvisual exposition, coaching andmentorship. 
             </p>
           </div>
         </div>
